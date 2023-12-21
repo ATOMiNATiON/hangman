@@ -1,12 +1,12 @@
 %-------------------------------------------
 % Adam Wu
-% 2023 December 20
+% 2023 December 21
 % main.tex
 %-------------------------------------------
 
 \newcommand{\NAME}{Adam Wu}
 \newcommand{\ASSIGNMENT}{Hangman}
-\newcommand{\CLASS}{2023 December 20}
+\newcommand{\CLASS}{2023 December 21}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -48,7 +48,7 @@
 
 \section{Purpose}
 
-The aim of this project is to practice with string arrays in C++. The best way to do that is to re-create the hangman game in the terminal! 
+Hangman is a classic word game that most people know. Its origin came from Europe during the 17th and 18th century. Criminals who were going to be sentenced to death could demand for a 'Rite of Words and Life'~\cite{CitekeyMisc}. For this project, the goal is to practice writing code in C++ (specifically playing around with string arrays). Thus, the best way to do that is to create hangman in the terminal! 
 
 \section{How to Use the Program}
 
@@ -86,28 +86,95 @@ To remove the executable, you will need to type \textit{make clean}. Soon after,
 
 \section{Program Design}
 
-This program only consists of 3 files. hangman.cpp, hangman\_helpers.cpp, and hangman\_helpers.h. The hangman helper file help with clearing the screen, the ascii art of the hangman, and validating the string array. The main hangman file then utilizes the helper function for the main game.
+This program only consists of 3 files. hangman.cpp, hangman\_helpers.cpp, and hangman\_helpers.h. The hangman helper file help with clearing the screen, the ascii art of the hangman, and validating the string array. The main hangman file then utilizes the helper function for the main game. 
+
+In the beginning of the game, it will clear the screen and display the gallows along with a line of the phrase and a line of the eliminated characters. It will also prompt a new line to have the player guess a letter. The following will be an example and the phrase will be: \textbf{we'll see}.
+
+\begin{Verbatim}[frame=single]
+      _____
+     |     |
+           |
+           |
+           |\
+           | \
+         __|__\
+
+
+        Phrase: __'__ ___
+    Eliminated:
+    
+    Guess a letter:
+\end{Verbatim}
+If you look closely at the example, you will notice that the 'phrase' and 'eliminated' are aligned properly. As player enters the correct letters, the program should also update. A new gallows will be printed, the phrase and eliminated will also be updated. If the player were to lose (getting 6 incorrect letters) then the output should be the following.
+
+\begin{Verbatim}[frame=single, label={example losing screen}]
+      _____
+     |     |
+    (_)    |
+    /|\    |
+     |     |\
+    / \    | \
+         __|__\
+    
+    
+        Phrase: w_'ll ___
+    Eliminated: abnopv
+    
+    You lose! The secret phrase was: we'll see
+\end{Verbatim}
+
+if the player were to win, then the only difference from the losing screen is that the message is \textbf{You win! The secrect phrase was: we'll see} in our case.
+
+Furthermore, inside the src folder, there also consists of a hangman\_helperTest.cpp to help test the hangman helper functions. It is not necessary for you to use it, it is good for me to test if my functions worked properly. 
 
 \subsection{Data Structures}
 
+This program only required the usage of an array that is static memory (heap memory was unnecessary for this project). The array was used to store the ascii art of the gallow.
 
-\subsection*{Algorithms}
+\subsection{Algorithms}
+
+In the hangman game, I made it so that the eliminated words would be sorted in alphabetical order. To do the sorting, I used a linear sorting algorithm (one that is similar to insertion sort). Below will be the psuedo-code for the way I have done it.
+
+\begin{Verbatim}[frame=single, label={update(eliminated)}]
+    update(eliminated):
+        if eliminated.empty():
+            eliminated += read
+        else:
+            int i = 0;
+            while (i < eliminated.length() && readChar > eliminated[i]) {
+                i++;
+            }
+        mistakes++; 
+\end{Verbatim}
 
 \subsection{Function Descriptions}
 
+Inside the hangman helpers header file we will have the following functions.\vspace{6mm}
+
+\noindent \textbf{\underline{bool string_contains_character(const std::string\& s, char c);}}\vspace{3mm}
+
+\noindent This function will check if a string contains a character c. If it does, it will return true. False otherwise. \vspace{3mm}
+
+\noindent \textbf{\underline{char read_letter();}}\vspace{3mm}
+
+\noindent This function will read a letter from stdin and return the read character back. \vspace{3mm}
+
+\noindent \textbf{\underline{bool validate_secret(const std::string\& secret);
+}}\vspace{3mm}
+
+\noindent This function will take in a string and will validate the string (aka the secret). The string is valid as long as it contains all lowercase letters or if the string contains punctuation like a space, an apostrophe, or a hyphens. If the secret (string) is valid, then it will return true. False otherwise. \vspace{3mm}
+
+\noindent \textbf{\underline{bool is_lowercase_letter(char c);}}\vspace{3mm}
+
+\noindent This function will check if a character c is lowercase. If it is, then it will return true. False otherwise. \vspace{3mm}
 
 \section{Results}
 
-\subsection{Numeric results}
-
+The hangman game works like the usual hangman game where the users may enter a secret phrase and guess the characters. If they guess 6 incorrect characters, then they lose. Additionally, the game works fine with no leaks or errors. 
 
 \subsection{Error Handling}
 
-
-
-
-
-
+This program checks if the number arguments is correct. If it is correct, then the program will continue. Otherwise, an error message will appear to show you how to use the program.
 
 %%%%%%% img section %%%%%%%%%%%%%%%%
 
