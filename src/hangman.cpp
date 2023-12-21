@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
             std::cout << "    Phrase: " << phrase << std::endl;
             std::cout << "Eliminated: " << eliminated << std::endl;
             std::cout << std::endl;
-            std::cout << "You win!" << std::endl;
+            std::cout << "You win! The secret phrase was: " << SECRET << std::endl;
             return EXIT_SUCCESS;
         }
 
