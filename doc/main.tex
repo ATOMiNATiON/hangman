@@ -1,0 +1,119 @@
+%-------------------------------------------
+% Adam Wu
+% 2023 December 20
+% main.tex
+%-------------------------------------------
+
+\newcommand{\NAME}{Adam Wu}
+\newcommand{\ASSIGNMENT}{Hangman}
+\newcommand{\CLASS}{2023 December 20}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{underscore}
+\usepackage{subcaption}
+\usepackage{fancyvrb}
+
+% My own package for better subsection
+\usepackage{titlesec}
+
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\ASSIGNMENT}
+\author{\NAME}
+\date{\CLASS}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead{}
+\fancyfoot[L]{\ASSIGNMENT\ -- \CLASS\ -- \NAME}
+\fancyfoot[R]{\thepage}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Purpose}
+
+The aim of this project is to practice with string arrays in C++. The best way to do that is to re-create the hangman game in the terminal! 
+
+\section{How to Use the Program}
+
+First clone the repository to get all the source files. The next step is to go to folder where this project is on your local machine and go to the \textit{src} folder. To run hangman you will need to compile the program first, then you can run it. In the next section, you will find out how to compile, run, and removal of the program.
+
+% Compiling the program
+\subsection{Compiling the program}
+
+You will just need to type \textit[make] and the program will start compiling. If you have never programmed before, a demonstration of this program compiling will be shown below.
+
+\begin{Verbatim}[frame=single]
+    $ make
+    c++    -c -o hangman.o hangman.cpp
+    c++    -c -o hangman_helpers.o hangman_helpers.cpp
+    g++ -std=c++17 -Wall -g -o hangman hangman.o hangman_helpers.o
+    $
+\end{Verbatim}
+
+after successfully compiling, try and type \textbf{ls}. When you do, you will notice a new file with a different color have emerged. That is the program executable. With that, we can move on to learning how to run the program.
+
+% Running the program
+\subsection{Running the program}
+
+Now to run the program, you will need to do the following:
+
+\begin{Verbatim}[frame=single]
+    $ ./hangman <secret word or phrase>
+\end{Verbatim}
+
+For this program, the allowed characters are lower cased characters and punctuation like a space, an apostrophe, and a dash. Other punctuation and capital letters will be unhallowed. From there on, the game should be very intuitive.
+
+\subsection{Removal of the program}
+
+To remove the executable, you will need to type \textit{make clean}. Soon after, you can type \textit{ls} to check that your folder does not contain the colored executable anymore.
+
+\section{Program Design}
+
+This program only consists of 3 files. hangman.cpp, hangman\_helpers.cpp, and hangman\_helpers.h. The hangman helper file help with clearing the screen, the ascii art of the hangman, and validating the string array. The main hangman file then utilizes the helper function for the main game.
+
+\subsection{Data Structures}
+
+
+\subsection*{Algorithms}
+
+\subsection{Function Descriptions}
+
+
+\section{Results}
+
+\subsection{Numeric results}
+
+
+\subsection{Error Handling}
+
+
+
+
+
+
+
+%%%%%%% img section %%%%%%%%%%%%%%%%
+
+
+% Any references in your report appear at
+% the end of the document automatically.
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+\end{document}
