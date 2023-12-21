@@ -28,3 +28,9 @@ make
 ./hangman <secret word or phrase>
 ```
 
+if you would like to remove the program, you can do the following.
+
+```
+make clean
+```
+the command above will remove the object files and the executable files generated during compilation.
