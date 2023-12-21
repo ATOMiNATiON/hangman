@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------------
+// Adam Wu
+// 2023 December 20
+// hangman_helpers.h
+// header file for hangman_helpers. 
+//-----------------------------------------------------------------------------
 #ifndef __HANGMAN_HELP_H__
 #define __HANGMAN_HELP_H__
 
