@@ -17,8 +17,11 @@ bool string_contains_character(const std::string& s, char c) {
 
 char read_letter() {
     std::string stream;
-    std::getline(std::cin, stream);
-    return stream[0];
+    if (std::getline(std::cin, stream) && !stream.empty()) {
+        return stream[0];
+    } else {
+        return '\0';
+    }
 }
 
 bool validate_secret(const std::string& secret) {
