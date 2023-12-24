@@ -27,5 +27,15 @@ int main() {
     assert(is_lowercase_letter(first));
     assert(is_lowercase_letter(second) == false);
 
+    char letter;
+    std::cout << "Enter a letter: ";
+    letter = read_letter();
+    std::cout << "The letter read read was: " << letter << std::endl;
+
+    if (letter == '\0') {
+        std::cout << "EOF was detected" << std::endl;
+    }
+
+
     return EXIT_SUCCESS;
 }
