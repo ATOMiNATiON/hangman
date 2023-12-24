@@ -40,7 +40,6 @@ int main(int argc, char* argv[]) {
 
     // Game loop
     while (mistakes != LOSING_MISTAKE) {
-        
         // print clear the screen
         std::cout << CLEAR_SCREEN << std::endl;
 
@@ -56,11 +55,11 @@ int main(int argc, char* argv[]) {
         do {
         std::cout << "Guess a letter: ";
         read = read_letter();
+        if (read == '\0') return EXIT_SUCCESS;
         } while ((string_contains_character(phrase, read)) || 
                  (string_contains_character(eliminated, read)) ||
-                 (read == ' ') ||
-                 (read == '\t'));
-
+                 (read == ' ') || (read == '\t') ||
+                 (!is_lowercase_letter(read)));
         if (string_contains_character(SECRET, read)) {
             // update the phrase
             for (std::size_t i = 0; i < SECRET.length(); i++) {
